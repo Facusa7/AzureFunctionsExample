@@ -28,5 +28,12 @@ namespace ServerlessFuncs
 
             return new OkObjectResult(todo);
         }
+
+        [FunctionName("GetTodos")]
+        public static IActionResult GetTodos([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todo")]HttpRequest req, TraceWriter log)
+        {
+            log.Info("Getting todo list items");
+            return new OkObjectResult(items);
+        }
     }
 }
